@@ -4,8 +4,8 @@
 
     <!-- 수정삭제버튼 -->
     <div class="d-flex justify-content-end">
-        <a class="btn btn-warning me-1" href="#">수정</a>
-        <form action="#">
+        <a class="btn btn-warning me-1" href="/board/1/updateForm">수정</a>
+        <form action="/board/1/delete" method="post">
             <button type="submit" class="btn btn-danger">삭제</button>
         </form>
     </div>
@@ -23,8 +23,8 @@
     <div class="card mt-3">
         <!-- 댓글등록 -->
         <div class="card-body">
-            <form action="#">
-                <input type="hidden" name="boardId">
+            <form action="/reply/save">
+                <input type="hidden" name="boardId" value="1">
                 <textarea class="form-control" rows="2" name="comment"></textarea>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-outline-primary mt-1">댓글등록</button>
@@ -43,7 +43,7 @@
                     <div class="px-1 me-1 bg-primary text-white rounded">ssar</div>
                     <div>댓글1</div>
                 </div>
-                <form action="#">
+                <form action="/board/1/reply/1/delete">
                     <button class="btn">🗑</button>
                 </form>
             </div>
