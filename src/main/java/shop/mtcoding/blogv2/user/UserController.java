@@ -5,58 +5,50 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import shop.mtcoding.blogv2._core.util.Script;
+import shop.mtcoding.blogv2._core.error.ex.Exception400;
 
 import javax.validation.Valid;
 
 @Controller
 public class UserController {
 
-    @ResponseBody
     @PostMapping("/user/update")
     public String update(@Valid UserRequest.PasswordUpdateDTO requestDTO, Errors errors) {
         System.out.println(requestDTO);
 
         if (errors.hasErrors()) {
             for (FieldError error : errors.getFieldErrors()) {
-                System.out.println(error.getDefaultMessage()+" : "+error.getField());
-                return Script.back(error.getDefaultMessage()+" : "+error.getField());
+                throw new Exception400(error.getDefaultMessage()+" : "+error.getField());
             }
         }
 
-        return Script.href("/");
+        return "redirect:/";
     }
 
-    @ResponseBody
     @PostMapping("/join")
     public String join(@Valid UserRequest.JoinDTO requestDTO, Errors errors){
         System.out.println(requestDTO);
 
         if (errors.hasErrors()) {
             for (FieldError error : errors.getFieldErrors()) {
-                System.out.println(error.getDefaultMessage()+" : "+error.getField());
-                return Script.back(error.getDefaultMessage()+" : "+error.getField());
-                //return Script.href("/", error.getDefaultMessage()+" : "+error.getField());
+                throw new Exception400(error.getDefaultMessage()+" : "+error.getField());
             }
         }
 
-        return Script.href("/loginForm");
+        return "redirect:/loginForm";
     }
 
-    @ResponseBody
     @PostMapping("/login")
     public String login(@Valid UserRequest.LoginDTO requestDTO, Errors errors){
         System.out.println(requestDTO);
 
         if (errors.hasErrors()) {
             for (FieldError error : errors.getFieldErrors()) {
-                System.out.println(error.getDefaultMessage()+" : "+error.getField());
-                return Script.back(error.getDefaultMessage()+" : "+error.getField());
+                throw new Exception400(error.getDefaultMessage()+" : "+error.getField());
             }
         }
 
-        return Script.href("/");
+        return "redirect:/";
     }
 
     @GetMapping("/logout")
