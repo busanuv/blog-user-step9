@@ -15,6 +15,7 @@
 
 ## 2단계 기능
 - 유저네임 중복체크 (AJAX)
+- 프로필 사진 등록
 - 페이징하기
 - 검색하기
 
@@ -35,6 +36,7 @@ create table user_tb (
     email varchar(20) not null,
     password varchar(60) not null,
     username varchar(20) not null unique,
+    profile varchar(100),
     primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

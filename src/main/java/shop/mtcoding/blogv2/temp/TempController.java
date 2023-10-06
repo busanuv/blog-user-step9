@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TempController {
 
+    @GetMapping({"", "/", "/board"})
+    public String home(){
+        return "index";
+    }
+
     @GetMapping("/loginForm")
     public String loginForm(){
         return "user/loginForm";
